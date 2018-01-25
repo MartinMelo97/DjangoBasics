@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1>Computadora No. {{ computadora.id }}</h1>
+
+    <div>
+        <p><b>Marca:</b> {{ computadora.marca }}</p>
+        <p><b>Modelo:</b> {{ computadora.modelo }}</p>
+        <p><b>Memoria RAM:</b> {{ computadora.RAM }} GB</p>
+        <p><b>Disco Duro:</b> {{ computadora.hardDisk }} {{ prefijo }}</p>
+        <p><b>Procesador:</b> {{ computadora.procesador }}</p>
+        <img src="{{ computadora.imagen.url }}"
+             alt="{{ computadora.marca }}"
+             width="500" height="500">
+        <a href="{% url 'computadoras:delete' computadora.id %}"><button>Eliminar</button></a>
+    <a href="{% url 'computadoras:edit' computadora.id %}"><button>Editar</button></a>
+    </div>
+{% endblock %}

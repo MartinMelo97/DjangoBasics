@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    {% if error %}
+        <h1 class="error">{{ error }}</h1>
+    {% endif %}
+    <h2>Crear nueva computadora</h2>
+    {% if type == "create" %}
+        <form action="/computadoras/create" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <input type="submit" value="Crear computadora">
+        </form>
+    {% else %}
+        <form action="/computadoras/edit/{{ computer.id }}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <input type="submit" value="Editar computadora">
+        </form>
+    {% endif %}
+{% endblock %}
+

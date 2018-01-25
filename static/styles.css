@@ -1,0 +1,13 @@
+.bienvenida{
+    color: #b2b2b2;
+}
+
+.card {
+    border: 1px black solid;
+    text-align: center;
+
+}
+
+img {
+    border-radius: 50%;
+}

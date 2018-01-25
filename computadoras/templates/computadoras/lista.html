@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Computadoras disponibles</h2>
+    {% for computadora in computadoras %}
+        <a href="{% url 'computadoras:detail' computadora.id %}"><div class="card">
+            <img src="{{ computadora.imagen.url }}" alt="{{ computadora.marca }}" width="100" height="100">
+            <h4>{{ computadora.marca }}</h4>
+            <h4>{{ computadora.modelo }}</h4>
+            <br>
+        </div></a>
+    {% endfor %}
+
+{% endblock %}
