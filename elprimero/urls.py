@@ -19,11 +19,13 @@ from main import urls as MainUrls
 from django.views.static import serve
 from django.conf import settings
 from computadoras import urls as CompuUrls
+from peliculas import urls as PeliculasUrls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('main/', include(MainUrls)),
     path('computadoras/', include(CompuUrls, namespace="computadoras")),
+    path('peliculas/',include(PeliculasUrls, namespace="peliculas")),
     re_path(r'^media/(?P<path>.*)$',
         view=serve,
         kwargs={'document_root':settings.MEDIA_ROOT}

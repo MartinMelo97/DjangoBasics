@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{{ pelicula.titulo }}</h1>
+    <img src="{{ pelicula.portada.url }}" alt="{{ pelicula.titulo }}" width="600" height="600">
+    <a href="{% url 'peliculas:movie_edit' pelicula.id %}"><button>Editar</button></a>
+    <a href="{% url 'peliculas:movie_delete' pelicula.id %}"><button>Eliminar</button></a>
+
+    <p>Duración: <b>{{ pelicula.duracion }}</b></p>
+    <p>Sinopsis:</p>
+    <p>{{ pelicula.sinopsis }}</p>
+    {% if pelicula.estreno %}
+        <p style="color:red;">Disponible ya en cines</p>
+    {% else %}
+        <p style="color:gray; text-decoration: line-through;">Aun no está disponible</p>
+    {% endif %}
+    <p>Director: <b>{{ pelicula.director.nombre }}</b></p>
+    <h2>Actores</h2>
+    <ul>
+        {% for actor in pelicula.actores.all %}
+            <h4>{{ actor.nombre }}</h4>
+
+        {% endfor %}
+
+    </ul>
+{% endblock %}

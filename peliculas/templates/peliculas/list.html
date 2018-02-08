@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Lista de peliculas</h1>
+
+    {% for pelicula in peliculas %}
+        <img src="{{ pelicula.portada.url }}" alt="{{ pelicula.titulo }}" width="300" height="300">
+        <a href="{% url 'peliculas:movie_detail' pelicula.id %}"><h3>{{ pelicula.titulo }}</h3></a>
+        <p>Duración: {{ pelicula.duracion }}</p>
+        {% if pelicula.estreno %}
+            <p style="color:red;">DISPONIBLE</p>
+        {% endif %}
+    {% endfor %}
+
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    {% if action == "create" %}
+        <form action="{% url 'peliculas:movie_create' %}" method="post" enctype="multipart/form-data">
+    {% else %}
+        <form action="{% url 'peliculas:movie_edit' id %}" method="post" enctype="multipart/form-data">
+    {% endif %}
+
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="guardar">
+    </form>
+{% endblock %}
